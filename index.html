@@ -52,7 +52,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- PESTAÑA 1: FORMULARIO DE EVALUACIÓN (VISTA DOCENTE) -->
+        <!-- PESTAÑA 1: FORMULARIO DE EVALUACIÓN -->
         <div id="form-tab" class="tab-content block">
             <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                 <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-8 py-10 text-white">
@@ -72,7 +72,7 @@
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Especialidad / Área Pedagógica</label>
-                            <input type="text" id="docente-specialty" required placeholder="Ej. Matemáticas de Secundaria / Universidad" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150">
+                            <input type="text" id="docente-specialty" required placeholder="Ej. Matemáticas de Secundaria" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150">
                         </div>
                     </div>
 
@@ -142,7 +142,7 @@
                     <div class="pt-4">
                         <h2 class="text-xl font-bold text-slate-950 flex items-center mb-1">
                             <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm mr-2">2</span>
-                            Opiniones Cualitativas y Co-Evaluación
+                            Opiniones Cualitativas
                         </h2>
                         <p class="text-xs text-slate-500 ml-9 mb-6">Por favor responda las siguientes preguntas pedagógicas con la mayor precisión posible:</p>
 
@@ -156,13 +156,13 @@
                             <!-- Abierta 2 -->
                             <div>
                                 <label class="block font-semibold text-slate-800 text-base mb-2">2.2 ¿De qué manera práctica e innovadora podría utilizar este material en su quehacer pedagógico habitual?</label>
-                                <textarea id="q5-val" required rows="3" placeholder="Ej. Como detonante cognitivo o introducción en el tema de lógica y bases de datos..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150"></textarea>
+                                <textarea id="q5-val" required rows="3" placeholder="Ej. Como detonante cognitivo o introducción en el tema de lógica..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150"></textarea>
                             </div>
 
                             <!-- Abierta 3 -->
                             <div>
                                 <label class="block font-semibold text-slate-800 text-base mb-2">2.3 ¿Qué sugerencias metodológicas o de diseño técnico propondría para potenciar el alcance didáctico del video?</label>
-                                <textarea id="q6-val" required rows="3" placeholder="Ej. Incorporar mayor contraste de color en las fórmulas o subtitulados de apoyo..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150"></textarea>
+                                <textarea id="q6-val" required rows="3" placeholder="Ej. Incorporar mayor contraste de color en las fórmulas..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150"></textarea>
                             </div>
                         </div>
                     </div>
@@ -177,8 +177,7 @@
             </div>
         </div>
 
-
-        <!-- PESTAÑA 2: DASHBOARD Y ANÁLISIS DE INFORMACIÓN (VISTA EQUIPO) -->
+        <!-- PESTAÑA 2: DASHBOARD Y ANÁLISIS DE INFORMACIÓN -->
         <div id="dashboard-tab" class="tab-content hidden">
             
             <!-- Resumen Estadístico de Valoraciones -->
@@ -203,7 +202,7 @@
 
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-slate-500 font-medium">Promedio Conexión Histórica</p>
+                        <p class="text-sm text-slate-500 font-medium">Promedio Conexión</p>
                         <h3 class="text-3xl font-extrabold text-slate-900 mt-1" id="stat-avg-connection">4.4</h3>
                         <p class="text-xs text-amber-500 font-semibold mt-2"><i class="fa-solid fa-circle-nodes mr-1"></i> Coherente</p>
                     </div>
@@ -212,7 +211,7 @@
 
                 <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-slate-500 font-medium">Promedio Calidad Audiovisual</p>
+                        <p class="text-sm text-slate-500 font-medium">Promedio Audiovisual</p>
                         <h3 class="text-3xl font-extrabold text-slate-900 mt-1" id="stat-avg-audiovisual">4.2</h3>
                         <p class="text-xs text-indigo-600 font-semibold mt-2"><i class="fa-solid fa-photo-film mr-1"></i> Atractivo Visual</p>
                     </div>
@@ -300,7 +299,7 @@
         </div>
     </div>
 
-    <!-- Modal de Autenticación para el Dashboard (Solo Acceso de Equipo/Usuario) -->
+    <!-- Modal de Autenticación para el Dashboard -->
     <div id="adminAuthModal" class="fixed inset-0 bg-slate-900/70 flex items-center justify-center p-4 z-50 hidden backdrop-blur-sm transition-all duration-300">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300">
             <div class="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-indigo-50 text-indigo-600 mb-5 text-2xl">
@@ -384,10 +383,10 @@
         ];
 
         // Seguridad y Código de Acceso del Administrador
-        const ADMIN_CODE = "admin2026"; // Código de seguridad personalizable
+        const ADMIN_CODE = "admin2026"; 
         let isAuthorized = false;
 
-        // Comprobar si el usuario ya se autenticó previamente en esta sesión
+        // Comprobar si el usuario ya se autenticó previamente
         if (sessionStorage.getItem('isMathAdmin') === 'true') {
             isAuthorized = true;
             document.getElementById('dashboard-lock-icon').className = "fa-solid fa-chart-line mr-1 text-indigo-600";
@@ -402,7 +401,6 @@
             }
         }
 
-        // Abrir modal de seguridad
         function openAdminAuthModal() {
             document.getElementById('admin-passcode').value = '';
             document.getElementById('auth-error-msg').classList.add('hidden');
@@ -412,12 +410,10 @@
             }, 150);
         }
 
-        // Cerrar modal de seguridad
         function closeAdminAuthModal() {
             document.getElementById('adminAuthModal').classList.add('hidden');
         }
 
-        // Validar credencial ingresada
         function validateAdminCode(e) {
             e.preventDefault();
             const enteredCode = document.getElementById('admin-passcode').value;
@@ -426,22 +422,17 @@
             if (enteredCode === ADMIN_CODE) {
                 isAuthorized = true;
                 sessionStorage.setItem('isMathAdmin', 'true');
-                
-                // Actualizar el ícono de bloqueo en la barra de navegación para reflejar el desbloqueo
                 document.getElementById('dashboard-lock-icon').className = "fa-solid fa-chart-line mr-1 text-indigo-600";
-                
                 closeAdminAuthModal();
                 switchTab('dashboard-tab');
             } else {
                 errorMsg.classList.remove('hidden');
-                // Efecto visual de vibración al fallar la contraseña
                 const modal = document.querySelector('#adminAuthModal > div');
                 modal.classList.add('animate-bounce');
                 setTimeout(() => modal.classList.remove('animate-bounce'), 500);
             }
         }
 
-        // Lógica de navegación de pestañas
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
@@ -450,7 +441,6 @@
             document.getElementById(tabId).classList.add('block');
             document.getElementById(tabId).classList.remove('hidden');
 
-            // Actualizar apariencia de los botones de navegación
             const btnForm = document.getElementById('btn-form-tab');
             const btnDash = document.getElementById('btn-dashboard-tab');
 
@@ -464,13 +454,11 @@
             }
         }
 
-        // Selección de valores de escala cerrados (1 al 5)
         let activeRatings = { q1: 0, q2: 0, q3: 0 };
         function setRating(question, value) {
             activeRatings[question] = value;
             document.getElementById(`${question}-val`).value = value;
             
-            // Estilizar botón seleccionado
             document.querySelectorAll(`.${question}-btn`).forEach(btn => {
                 btn.classList.remove('active');
                 if (parseInt(btn.innerText) === value) {
@@ -479,12 +467,10 @@
             });
         }
 
-        // Procesar respuestas enviadas por nuevos docentes evaluadores
         function handleFormSubmit(e) {
             e.preventDefault();
             
             if (!activeRatings.q1 || !activeRatings.q2 || !activeRatings.q3) {
-                // Mensaje en pantalla integrado para evitar alertas intrusivas
                 const errorBox = document.createElement('div');
                 errorBox.className = "fixed bottom-5 right-5 bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg z-50 text-sm font-semibold";
                 errorBox.innerHTML = "<i class='fa-solid fa-circle-exclamation mr-2'></i> Por favor, califique todas las escalas cuantitativas.";
@@ -508,7 +494,6 @@
             showSuccessModal();
         }
 
-        // Modal de éxito y redirección automática
         function showSuccessModal() {
             const modal = document.getElementById('successModal');
             modal.classList.remove('hidden');
@@ -518,7 +503,6 @@
             document.getElementById('successModal').classList.add('hidden');
             document.getElementById('evaluationForm').reset();
             
-            // Restablecer los botones de escala numérica
             document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('active'));
             activeRatings = { q1: 0, q2: 0, q3: 0 };
 
@@ -527,7 +511,6 @@
             }
         }
 
-        // Calcular y actualizar el Dashboard dinámicamente
         let metricsChartInstance = null;
         function updateDashboard() {
             const total = dataset.length;
@@ -543,13 +526,11 @@
             const avgQ2 = (sumQ2 / total).toFixed(1);
             const avgQ3 = (sumQ3 / total).toFixed(1);
 
-            // Actualizar datos de tarjetas informativas
             document.getElementById('stat-total-evals').innerText = total;
             document.getElementById('stat-avg-clarity').innerText = avgQ1;
             document.getElementById('stat-avg-connection').innerText = avgQ2;
             document.getElementById('stat-avg-audiovisual').innerText = avgQ3;
 
-            // Renderizar lista de testimonios y opiniones cualitativas
             const listContainer = document.getElementById('testimonies-list');
             listContainer.innerHTML = '';
 
@@ -577,7 +558,6 @@
                 listContainer.innerHTML += docCard;
             });
 
-            // Actualizar o crear Gráfico Radial interactivo de fortalezas
             const ctx = document.getElementById('metricsChart').getContext('2d');
             if (metricsChartInstance) {
                 metricsChartInstance.destroy();
@@ -613,13 +593,10 @@
                 }
             });
 
-            // Generar la reflexión grupal automática
             generateReflectiveDraft(avgQ1, avgQ2, avgQ3);
         }
 
-        // Lógica de compilación automática del informe de análisis
         function generateReflectiveDraft(q1, q2, q3) {
-            // Valores iniciales si no se invocan dinámicamente
             q1 = q1 || parseFloat(document.getElementById('stat-avg-clarity').innerText);
             q2 = q2 || parseFloat(document.getElementById('stat-avg-connection').innerText);
             q3 = q3 || parseFloat(document.getElementById('stat-avg-audiovisual').innerText);
@@ -644,7 +621,6 @@
             document.getElementById('reflection-box').innerHTML = reflectionHTML;
         }
 
-        // Descarga de las respuestas de los docentes en formato CSV para sustento de informe
         function exportToCSV() {
             let csvContent = "data:text/csv;charset=utf-8,";
             csvContent += "Nombre Docente,Especialidad,Claridad (1-5),Conexión (1-5),Calidad Audiovisual (1-5),Impactante/Relevante,Uso Práctico,Sugerencias de Mejora\r\n";
@@ -668,7 +644,6 @@
             document.body.removeChild(link);
         }
 
-        // Carga inicial al ingresar a la app
         window.onload = function() {
             updateDashboard();
         };
