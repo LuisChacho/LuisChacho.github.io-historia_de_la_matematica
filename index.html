@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 min-height-screen text-slate-800">
+<body class="bg-slate-50 min-h-screen text-slate-800">
 
     <!-- Navegación Superior -->
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
@@ -32,7 +32,7 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
                         <span class="bg-indigo-600 text-white p-2 rounded-lg mr-2">
-                            <i class="fa-solid fa-calculator-diagonal text-lg"></i>
+                            <i class="fa-solid fa-calculator text-lg"></i>
                         </span>
                         <span class="font-bold text-xl tracking-tight text-slate-900">EduMath <span class="text-indigo-600">Analytics</span></span>
                     </div>
@@ -484,7 +484,12 @@
             e.preventDefault();
             
             if (!activeRatings.q1 || !activeRatings.q2 || !activeRatings.q3) {
-                alert("Por favor responda las valoraciones de escala del 1 al 5 antes de enviar.");
+                // Mensaje en pantalla integrado para evitar alertas intrusivas
+                const errorBox = document.createElement('div');
+                errorBox.className = "fixed bottom-5 right-5 bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg z-50 text-sm font-semibold";
+                errorBox.innerHTML = "<i class='fa-solid fa-circle-exclamation mr-2'></i> Por favor, califique todas las escalas cuantitativas.";
+                document.body.appendChild(errorBox);
+                setTimeout(() => errorBox.remove(), 4000);
                 return;
             }
 
@@ -639,7 +644,7 @@
             document.getElementById('reflection-box').innerHTML = reflectionHTML;
         }
 
-        // Descarga de las respuestas de los 5 docentes en formato CSV para sustento de informe
+        // Descarga de las respuestas de los docentes en formato CSV para sustento de informe
         function exportToCSV() {
             let csvContent = "data:text/csv;charset=utf-8,";
             csvContent += "Nombre Docente,Especialidad,Claridad (1-5),Conexión (1-5),Calidad Audiovisual (1-5),Impactante/Relevante,Uso Práctico,Sugerencias de Mejora\r\n";
