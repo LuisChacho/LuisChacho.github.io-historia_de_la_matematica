@@ -11,7 +11,7 @@
     <!-- Chart.js para los gráficos interactivos de análisis -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
@@ -328,7 +328,7 @@
 
     <!-- Script de Lógica e Interactividad -->
     <script>
-        // Array de evaluaciones precargado con 5 docentes realistas (Fase 1 completada por defecto)
+        // Array de calificaciones pre-cargado con 5 docentes realistas (Fase 1 completada por defecto)
         let dataset = [
             {
                 name: "Prof. Alejandro Vargas",
@@ -348,7 +348,7 @@
                 q3: 5,
                 q4: "La calidad estética del video y la música de fondo crean una atmósfera de aprendizaje excelente. Rompe el estigma de las clases rígidas.",
                 q5: "Ideal para clases invertidas (Flipped Classroom). Los chicos pueden verlo en casa y debatir sobre matemáticas antiguas el día de la sesión presencial.",
-                q6: "Sugiero añadir más subtítulos emergentes cuando se mencionen nombres de matemáticos árabes o griegos para mejorar la retención ortográfica."
+                q6: "Sugiero añadir más subtítulos emergentes cuando se mencionen de matemáticos árabes o griegos para mejorar la retención ortográfica."
             },
             {
                 name: "Mgtr. Francisco Leal",
@@ -386,7 +386,7 @@
         const ADMIN_CODE = "admin2026"; 
         let isAuthorized = false;
 
-        // Comprobar si el usuario ya se autenticó previamente
+        // Comprobar si el usuario ya se autenticó previamente en esta pestaña
         if (sessionStorage.getItem('isMathAdmin') === 'true') {
             isAuthorized = true;
             document.getElementById('dashboard-lock-icon').className = "fa-solid fa-chart-line mr-1 text-indigo-600";
