@@ -42,8 +42,8 @@
                     <button onclick="switchTab('form-tab')" id="btn-form-tab" class="px-4 py-2 text-sm font-semibold text-indigo-600 border-b-2 border-indigo-600 focus:outline-none transition-all duration-200">
                         <i class="fa-solid fa-square-poll-horizontal mr-1"></i> Responder Cuestionario
                     </button>
-                    <button onclick="switchTab('dashboard-tab')" id="btn-dashboard-tab" class="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-800 focus:outline-none transition-all duration-200">
-                        <i class="fa-solid fa-chart-line mr-1"></i> Dashboard y Análisis
+                    <button onclick="tryAccessDashboard()" id="btn-dashboard-tab" class="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-800 focus:outline-none transition-all duration-200">
+                        <i class="fa-solid fa-lock mr-1 text-slate-400" id="dashboard-lock-icon"></i> Dashboard y Análisis
                     </button>
                 </div>
             </div>
@@ -300,6 +300,33 @@
         </div>
     </div>
 
+    <!-- Modal de Autenticación para el Dashboard (Solo Acceso de Equipo/Usuario) -->
+    <div id="adminAuthModal" class="fixed inset-0 bg-slate-900/70 flex items-center justify-center p-4 z-50 hidden backdrop-blur-sm transition-all duration-300">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300">
+            <div class="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-indigo-50 text-indigo-600 mb-5 text-2xl">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 text-center mb-2">Acceso Restringido</h3>
+            <p class="text-sm text-slate-500 text-center leading-relaxed mb-6">El panel de analíticas y comentarios grupales está reservado únicamente para el equipo de desarrollo de la actividad.</p>
+            
+            <form onsubmit="validateAdminCode(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Código de Acceso del Equipo</label>
+                    <input type="password" id="admin-passcode" placeholder="••••••••" class="w-full text-center tracking-widest px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all duration-150">
+                    <p id="auth-error-msg" class="text-xs text-red-500 mt-2 font-semibold text-center hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Código de acceso incorrecto. Intente nuevamente.</p>
+                </div>
+                <div class="flex space-x-3 pt-2">
+                    <button type="submit" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition-all text-sm shadow-md hover:shadow-indigo-500/10">
+                        Desbloquear Dashboard
+                    </button>
+                    <button type="button" onclick="closeAdminAuthModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition-all text-sm">
+                        Volver al Formulario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Script de Lógica e Interactividad -->
     <script>
         // Array de evaluaciones precargado con 5 docentes realistas (Fase 1 completada por defecto)
@@ -355,6 +382,64 @@
                 q6: "Recomiendo simplificar las ecuaciones al final para no asustar a los estudiantes de niveles iniciales."
             }
         ];
+
+        // Seguridad y Código de Acceso del Administrador
+        const ADMIN_CODE = "admin2026"; // Código de seguridad personalizable
+        let isAuthorized = false;
+
+        // Comprobar si el usuario ya se autenticó previamente en esta sesión
+        if (sessionStorage.getItem('isMathAdmin') === 'true') {
+            isAuthorized = true;
+            document.getElementById('dashboard-lock-icon').className = "fa-solid fa-chart-line mr-1 text-indigo-600";
+        }
+
+        // Evaluar el intento de acceso al Dashboard
+        function tryAccessDashboard() {
+            if (isAuthorized) {
+                switchTab('dashboard-tab');
+            } else {
+                openAdminAuthModal();
+            }
+        }
+
+        // Abrir modal de seguridad
+        function openAdminAuthModal() {
+            document.getElementById('admin-passcode').value = '';
+            document.getElementById('auth-error-msg').classList.add('hidden');
+            document.getElementById('adminAuthModal').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('admin-passcode').focus();
+            }, 150);
+        }
+
+        // Cerrar modal de seguridad
+        function closeAdminAuthModal() {
+            document.getElementById('adminAuthModal').classList.add('hidden');
+        }
+
+        // Validar credencial ingresada
+        function validateAdminCode(e) {
+            e.preventDefault();
+            const enteredCode = document.getElementById('admin-passcode').value;
+            const errorMsg = document.getElementById('auth-error-msg');
+
+            if (enteredCode === ADMIN_CODE) {
+                isAuthorized = true;
+                sessionStorage.setItem('isMathAdmin', 'true');
+                
+                // Actualizar el ícono de bloqueo en la barra de navegación para reflejar el desbloqueo
+                document.getElementById('dashboard-lock-icon').className = "fa-solid fa-chart-line mr-1 text-indigo-600";
+                
+                closeAdminAuthModal();
+                switchTab('dashboard-tab');
+            } else {
+                errorMsg.classList.remove('hidden');
+                // Efecto visual de vibración al fallar la contraseña
+                const modal = document.querySelector('#adminAuthModal > div');
+                modal.classList.add('animate-bounce');
+                setTimeout(() => modal.classList.remove('animate-bounce'), 500);
+            }
+        }
 
         // Lógica de navegación de pestañas
         function switchTab(tabId) {
@@ -433,7 +518,7 @@
             activeRatings = { q1: 0, q2: 0, q3: 0 };
 
             if (goToDashboard) {
-                switchTab('dashboard-tab');
+                tryAccessDashboard();
             }
         }
 
